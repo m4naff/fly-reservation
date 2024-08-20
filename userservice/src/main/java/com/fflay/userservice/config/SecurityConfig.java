@@ -1,6 +1,6 @@
 package com.fflay.userservice.config;
 
-import com.fflay.userservice.securit.CustomAuthenticationEntryPoint;
+import com.fflay.userservice.security.CustomAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

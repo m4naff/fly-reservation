@@ -1,4 +1,4 @@
-package com.fflay.userservice.securit;
+package com.fflay.userservice.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
