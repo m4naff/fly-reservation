@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
                 .header(CustomError.Header.API_ERROR.getName())
                 .message(ex.getMessage())
                 .build();
+        return new ResponseEntity<>(customError, HttpStatus.BAD_REQUEST);
     }
 
 }

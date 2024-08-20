@@ -1,5 +1,6 @@
 package com.fflay.userservice.service.impl;
 
+import com.fflay.userservice.exception.TokenAlreadyInvalidatedException;
 import com.fflay.userservice.model.user.entity.InvalidTokenEntity;
 import com.fflay.userservice.repository.InvalidTokenRepository;
 import com.fflay.userservice.service.InvalidTokenService;
@@ -24,19 +25,19 @@ public class InvalidTokenServiceImpl implements InvalidTokenService {
      */
     @Override
     public void invalidateTokens(Set<String> tokenIds) {
-       final Set<InvalidTokenEntity> enocaInvalidTokenEntities = tokenIds.stream()
+       final Set<InvalidTokenEntity> collectInvalidTokenEntities = tokenIds.stream()
                .map(tokenId -> InvalidTokenEntity.builder()
                        .tokenId(tokenId)
                        .build())
                .collect(Collectors.toSet());
-       invalidTokenRepository.saveAll(enocaInvalidTokenEntities);
+       invalidTokenRepository.saveAll(collectInvalidTokenEntities);
     }
 
     @Override
     public void checkForInvalidityOfToken(String tokenId) {
         final boolean isTokenInvalid = invalidTokenRepository.findByTokenId(tokenId).isPresent();
         if(!isTokenInvalid){
-            throw new TokenAlre;
+            throw new TokenAlreadyInvalidatedException();
         }
     }
 }
