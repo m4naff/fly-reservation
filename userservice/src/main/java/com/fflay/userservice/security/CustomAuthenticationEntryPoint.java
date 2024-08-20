@@ -35,7 +35,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
         final CustomError customError = CustomError.builder()
                 .header(CustomError.Header.AUTH_ERROR.getName())
-                .status(HttpStatus.UNAUTHORIZED)
+                .httpStatus(HttpStatus.UNAUTHORIZED)
                 .isSuccess(false)
                 .build();
 

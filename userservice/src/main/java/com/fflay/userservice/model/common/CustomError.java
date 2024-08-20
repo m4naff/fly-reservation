@@ -22,7 +22,7 @@ public class CustomError {
     @Builder.Default
     LocalDateTime time = LocalDateTime.now();
 
-    HttpStatus status;
+    HttpStatus httpStatus;
     String header;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     String message;
