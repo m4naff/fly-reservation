@@ -49,6 +49,15 @@
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
 
+		<!-- BOUNCY CASTLE DEPENDENCY -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpkix-jdk18on</artifactId>
+			<version>1.77</version>
+		</dependency>
+		<!-- BOUNCY CASTLE DEPENDENCY -->
+
+		<!-- JWT DEPENDENCIES -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
@@ -66,6 +75,7 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.5</version>
 		</dependency>
+		<!-- JWT DEPENDENCIES -->
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
