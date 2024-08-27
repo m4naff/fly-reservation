@@ -1,5 +1,6 @@
 package com.fflay.userservice.config;
 
+import com.fflay.userservice.filter.CustomBearerTokenAuthenticationFilter;
 import com.fflay.userservice.security.CustomAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

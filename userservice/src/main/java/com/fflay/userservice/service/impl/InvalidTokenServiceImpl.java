@@ -36,7 +36,7 @@ public class InvalidTokenServiceImpl implements InvalidTokenService {
     @Override
     public void checkForInvalidityOfToken(String tokenId) {
         final boolean isTokenInvalid = invalidTokenRepository.findByTokenId(tokenId).isPresent();
-        if(!isTokenInvalid){
+        if(isTokenInvalid){
             throw new TokenAlreadyInvalidatedException();
         }
     }
