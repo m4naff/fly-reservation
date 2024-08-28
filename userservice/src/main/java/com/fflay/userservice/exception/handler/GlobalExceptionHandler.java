@@ -1,7 +1,9 @@
 package com.fflay.userservice.exception.handler;
 
+import com.fflay.userservice.exception.PasswordNotValidException;
 import com.fflay.userservice.exception.TokenAlreadyInvalidatedException;
 import com.fflay.userservice.exception.UserAlreadyExistException;
+import com.fflay.userservice.exception.UserNotFoundException;
 import com.fflay.userservice.model.common.CustomError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +44,38 @@ public class GlobalExceptionHandler {
                 .message(ex.getMessage())
                 .build();
         return new ResponseEntity<>(customError,HttpStatus.CONFLICT);
+    }
+
+    /**
+     * Handles UserNotFoundException thrown when a user is not found.
+     *
+     * @param ex The UserNotFoundException instance.
+     * @return ResponseEntity with CustomError containing details of the exception.
+     */
+    @ExceptionHandler(UserNotFoundException.class)
+    protected ResponseEntity<CustomError> handleUserNotFoundException(final UserNotFoundException ex) {
+        CustomError customError = CustomError.builder()
+                .httpStatus(HttpStatus.NOT_FOUND)
+                .header(CustomError.Header.API_ERROR.getName())
+                .message(ex.getMessage())
+                .build();
+        return new ResponseEntity<>(customError,HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Handles PasswordNotValidException thrown when a password is not valid.
+     *
+     * @param ex The PasswordNotValidException instance.
+     * @return ResponseEntity with CustomError containing details of the exception.
+     */
+    @ExceptionHandler(PasswordNotValidException.class)
+    protected ResponseEntity<CustomError> handlePasswordNotValidException(final PasswordNotValidException ex) {
+        CustomError customError = CustomError.builder()
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .header(CustomError.Header.VALIDATION_ERROR.getName())
+                .message(ex.getMessage())
+                .build();
+        return new ResponseEntity<>(customError,HttpStatus.BAD_REQUEST);
     }
 
 }
