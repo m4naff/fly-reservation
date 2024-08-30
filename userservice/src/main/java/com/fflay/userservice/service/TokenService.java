@@ -35,7 +35,7 @@ public interface TokenService {
      * @param token the token to retrieve the authentication for.
      * @return the {@link UsernamePasswordAuthenticationToken} associated with the token.
      */
-    UsernamePasswordAuthenticationToken getAuthenticationToken(final String token);
+    UsernamePasswordAuthenticationToken getAuthentication(final String token);
 
     /**
      * Verifies and validates the given JWT.

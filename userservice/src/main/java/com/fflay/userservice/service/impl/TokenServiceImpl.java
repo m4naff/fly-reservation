@@ -131,7 +131,7 @@ public class TokenServiceImpl implements TokenService {
      * @return an {@link UsernamePasswordAuthenticationToken} containing the user's authentication details.
      */
     @Override
-    public UsernamePasswordAuthenticationToken getAuthenticationToken(final String token) {
+    public UsernamePasswordAuthenticationToken getAuthentication(final String token) {
         final Jws<Claims> claimsJws = Jwts.parser()
                 .verifyWith(tokenConfigurationParameter.getPublicKey())
                 .build()
