@@ -59,7 +59,7 @@ public class CustomBearerTokenAuthenticationFilter extends OncePerRequestFilter 
             final String tokenId = tokenService.getId(jwt);
             invalidTokenService.checkForInvalidityOfToken(tokenId);
             final UsernamePasswordAuthenticationToken authentication = tokenService
-                    .getAuthenticationToken(jwt);
+                    .getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);

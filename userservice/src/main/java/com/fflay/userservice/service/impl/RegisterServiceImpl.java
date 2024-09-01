@@ -4,6 +4,7 @@ import com.fflay.userservice.exception.UserAlreadyExistException;
 import com.fflay.userservice.model.user.User;
 import com.fflay.userservice.model.user.dto.request.RegisterRequest;
 import com.fflay.userservice.model.user.entity.UserEntity;
+import com.fflay.userservice.model.user.enums.UserType;
 import com.fflay.userservice.model.user.mapper.RegisterRequestToUserEntityMapper;
 import com.fflay.userservice.model.user.mapper.UserEntityToUserMapper;
 import com.fflay.userservice.repository.UserRepository;
