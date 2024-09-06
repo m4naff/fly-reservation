@@ -4,10 +4,18 @@ import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fly.reservationservice.model.auth.JwtRecord;
+import com.fly.reservationservice.utils.JwtRecordConverter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.jwt.Jwt;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Custom deserializer for {@link UsernamePasswordAuthenticationToken}.
@@ -39,7 +47,22 @@ public class UsernamePasswordAuthenticationTokenDeserializer extends JsonDeseria
 
         // Extract the nested principal object and deserialize it into a JwtRecord object
         JsonNode principalNode = node.get("principal");
-        JwtRecord
+        JwtRecord jwtRecord = objectMapper.treeToValue(principalNode, JwtRecord.class);
 
+        // Convert JwtRecord to jwt
+        Jwt principal = JwtRecordConverter.convertJwtRecordToJwt(jwtRecord);
+
+        // Extracting the credentials
+        String credentials = node.get("credentials").isNull() ? null : node.get("credentials").asText();
+
+        // Extracting the authorities
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        ArrayNode authoritiesNode = (ArrayNode) node.get("authorities");
+        for (JsonNode authorityNode : authoritiesNode) {
+            String authority = authorityNode.get("authority").asText();
+            authorities.add(new SimpleGrantedAuthority(authority));
+        }
+
+        return new UsernamePasswordAuthenticationToken(principal, credentials, authorities);
     }
 }
