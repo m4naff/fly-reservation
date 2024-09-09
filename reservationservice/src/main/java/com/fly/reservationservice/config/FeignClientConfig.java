@@ -46,6 +46,7 @@ public class FeignClientConfig {
         objectMapper.registerModule(module);
 
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+        return objectMapper;
     }
 
     /**
