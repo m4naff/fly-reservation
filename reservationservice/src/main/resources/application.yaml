@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: reservationservice
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/reservationservice #postgres is DB_name
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          :use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:8761/eureka/"

@@ -17,8 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class FlightRequest {
-
+public class FlightCreateRequest {
     @NotBlank(message = "FlightNumber is required")
     Long flightNumber;
     @NotBlank(message = "DepartureDate is required")
@@ -30,5 +29,4 @@ public class FlightRequest {
     String arrivalLocation;
     @Size(min = 0, message = "Price should be greater than 0")
     BigDecimal price;
-
 }
