@@ -2,6 +2,7 @@ package com.fly.reservationservice.model.reservation.entity;
 
 
 import com.fly.reservationservice.model.common.entity.BaseEntity;
+import com.fly.reservationservice.model.reservation.enums.FlightStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -49,6 +50,10 @@ public class FlightEntity extends BaseEntity {
 
     @Column(name = "price")
     BigDecimal price;
+
+    @Column(name = "fligh_status")
+    @Builder.Default
+    FlightStatus flightStatus = FlightStatus.ACTIVE;
 
     @OneToMany(mappedBy = "flightEntity",cascade = CascadeType.ALL,orphanRemoval = true)
     List<SeatEntity> seats = new ArrayList<>();

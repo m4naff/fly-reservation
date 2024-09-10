@@ -26,6 +26,7 @@ public class SeatEntity {
     @Column(name = "seat_number",unique = true)
     String seatNumber;
 
+    @Builder.Default
     @Column(name = "is_reserved")
     Boolean isReserved = false;
 
