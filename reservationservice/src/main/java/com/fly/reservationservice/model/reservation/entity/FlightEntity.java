@@ -32,9 +32,7 @@ public class FlightEntity extends BaseEntity {
     String id;
 
     @Column(name = "flight_number", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flight_seq")
-    @SequenceGenerator(name = "flight_seq", sequenceName = "flight_sequence", allocationSize = 1)
-    Long flightNumber;
+    String flightNumber;
 
     @Column(name = "departure_date")
     LocalDateTime departureDate;

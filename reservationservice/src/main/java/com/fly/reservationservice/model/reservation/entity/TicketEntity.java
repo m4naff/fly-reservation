@@ -22,7 +22,7 @@ public class TicketEntity {
     Long id;
 
     @Column(name = "flight_number")
-    Long flightNumber;
+    String flightNumber;
 
     @Column(name = "user_id")
     String userId;

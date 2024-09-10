@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FlightCreateRequest {
     @NotBlank(message = "FlightNumber is required")
-    Long flightNumber;
+    String flightNumber;
     @NotBlank(message = "DepartureDate is required")
     LocalDateTime departureDate;
     LocalDateTime arrivalDate;
