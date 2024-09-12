@@ -23,7 +23,7 @@ public class SeatEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
 
-    @Column(name = "seat_number",unique = true)
+    @Column(name = "seat_number")
     String seatNumber;
 
     @Builder.Default

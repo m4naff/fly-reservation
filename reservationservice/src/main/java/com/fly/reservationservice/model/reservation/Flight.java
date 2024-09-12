@@ -27,5 +27,5 @@ public class Flight extends BaseDomainModel {
     String departureLocation;
     String arrivalLocation;
     BigDecimal price;
-    List<SeatEntity> seats;
+    List<Seat> seats;
 }

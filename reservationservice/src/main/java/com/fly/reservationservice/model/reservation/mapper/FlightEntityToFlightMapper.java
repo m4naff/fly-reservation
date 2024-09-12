@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper
 public interface FlightEntityToFlightMapper extends BaseMapper<FlightEntity, Flight> {
+    SeatEntityToSeatMapper SEAT_ENTITY_TO_SEAT_MAPPER = SeatEntityToSeatMapper.initialize();
 
     /**
      * Maps entity named {@link FlightEntity} to request named {@link Flight}.
@@ -27,6 +28,11 @@ public interface FlightEntityToFlightMapper extends BaseMapper<FlightEntity, Fli
                 .departureLocation(source.getDepartureLocation())
                 .arrivalLocation(source.getArrivalLocation())
                 .price(source.getPrice())
+                .createdAt(source.getCreatedAt())
+                .createdBy(source.getCreatedBy())
+                .updatedAt(source.getUpdatedAt())
+                .updatedBy(source.getUpdatedBy())
+                .seats(SEAT_ENTITY_TO_SEAT_MAPPER.map(source.getSeats()))
                 .build();
     }
 

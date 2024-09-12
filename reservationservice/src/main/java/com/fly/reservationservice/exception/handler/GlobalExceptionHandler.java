@@ -1,13 +1,12 @@
-package com.fly.reservationservice.exception;
+package com.fly.reservationservice.exception.handler;
 
+import com.fly.reservationservice.exception.EntityAlreadyExistException;
+import com.fly.reservationservice.exception.FlightNotFoundException;
 import com.fly.reservationservice.model.common.CustomError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Global exception handler named {@link GlobalExceptionHandler}.
@@ -30,5 +29,16 @@ public class GlobalExceptionHandler {
                 .message(e.getMessage())
                 .build();
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(FlightNotFoundException.class)
+    public ResponseEntity<CustomError> handleFlightNotFoundException(FlightNotFoundException e) {
+        CustomError error = CustomError.builder()
+                .httpStatus(HttpStatus.NOT_FOUND)
+                .isSuccess(false)
+                .header(CustomError.Header.NOT_FOUND.getName())
+                .message(e.getMessage())
+                .build();
+        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
     }
 }

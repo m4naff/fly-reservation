@@ -2,6 +2,7 @@ package com.fly.reservationservice.repository;
 
 import com.fly.reservationservice.model.reservation.entity.FlightEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
