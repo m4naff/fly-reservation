@@ -52,7 +52,11 @@ public class SecurityConfig {
                 .cors(customizer -> customizer.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(customizer -> customizer
-                        .requestMatchers("api/v1/users/register","api/v1/users/login")
+                        .requestMatchers(
+                                "api/v1/users/register",
+                                "api/v1/users/login",
+                                "api/v1/users/validate-token",
+                                "api/v1/users/authenticate")
                         .permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

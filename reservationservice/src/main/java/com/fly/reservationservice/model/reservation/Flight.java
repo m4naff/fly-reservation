@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Flight extends BaseDomainModel {
-    Long flightNumber;
+    String flightNumber;
     LocalDateTime departureDate;
     LocalDateTime arrivalDate;
     String departureLocation;

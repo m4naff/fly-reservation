@@ -19,8 +19,8 @@ import java.util.List;
  */
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
 @Entity
 @Table(name = "flights")
@@ -54,21 +54,6 @@ public class FlightEntity extends BaseEntity {
     FlightStatus flightStatus = FlightStatus.ACTIVE;
 
     @OneToMany(mappedBy = "flightEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<SeatEntity> seats = new ArrayList<>();
+    List<SeatEntity> seats;
 
-    public void generateSeats(int rows, int seatsPerRow) {
-        char[] seatLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-        for (int row = 1; row <= rows; row++) {
-            for (int seat = 0; seat < seatsPerRow; seat++) {
-                String seatNumber = row + String.valueOf(seatLetters[seat]);
-                this.seats.add(
-                        SeatEntity.builder()
-                                .seatNumber(seatNumber)
-                                .flightEntity(this)
-                                .isReserved(false)
-                                .build()
-                );
-            }
-        }
-    }
 }

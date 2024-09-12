@@ -16,5 +16,5 @@ public interface FlightRepository extends JpaRepository<FlightEntity, String> {
      * @param flightNumber the flight number
      * @return the flight entity
      */
-    Optional<FlightEntity> findByFlightNumber(Long flightNumber);
+    Optional<FlightEntity> findByFlightNumber(String flightNumber);
 }

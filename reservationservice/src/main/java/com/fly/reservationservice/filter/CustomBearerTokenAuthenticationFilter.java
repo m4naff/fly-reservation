@@ -74,7 +74,7 @@ public class CustomBearerTokenAuthenticationFilter extends OncePerRequestFilter 
                 }
             }
         }else{
-            log.warn("Missing or invalid Authorization header fo request: {}", request.getRequestURI());
+            log.warn("Missing or invalid Authorization header for request: {}", request.getRequestURI());
         }
         filterChain.doFilter(request,response);
     }

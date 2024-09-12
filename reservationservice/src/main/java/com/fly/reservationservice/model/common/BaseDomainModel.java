@@ -19,8 +19,8 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @SuperBuilder
 public abstract class BaseDomainModel {
-    private LocalDateTime createdAt;
     private String createdBy;
-    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
     private String updatedBy;
+    private LocalDateTime updatedAt;
 }
