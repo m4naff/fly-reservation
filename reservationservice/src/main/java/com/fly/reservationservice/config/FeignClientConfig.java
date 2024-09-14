@@ -78,7 +78,7 @@ public class FeignClientConfig {
         }
 
         @Override
-        public Object decode(Response response, Type type) throws IOException, DecodeException, FeignException {
+        public Object decode(Response response, Type type) throws IOException{
             // Handle specific HTTP status codes and throw corresponding FeignExceptions
             if(response.status() == HttpStatus.UNAUTHORIZED.value()){
                 throw new FeignException.Unauthorized("Unauthorized", response.request(), response.request().body(),response.headers());

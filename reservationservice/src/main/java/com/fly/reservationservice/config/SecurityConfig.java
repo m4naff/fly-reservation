@@ -67,7 +67,8 @@ public class SecurityConfig {
                 .cors(customizer -> customizer.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(customizer ->
-                        customizer.requestMatchers("api/v1/flight/create-flight").permitAll()
+                        customizer.requestMatchers("api/v1/flight/create-flight","api/v1/flight/delete-flight/")
+                                .hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(customBearerTokenAuthenticationFilter, BearerTokenAuthenticationFilter.class);

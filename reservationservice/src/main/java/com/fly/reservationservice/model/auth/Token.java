@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 public class Token {
 
         private final String accessToken;
-        private final long accessTokenExpiresIn;
+        private final Long accessTokenExpiresIn;
         private final String refreshToken;
 
         private static final String TOKEN_PREFIX = "Bearer ";

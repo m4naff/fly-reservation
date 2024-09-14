@@ -24,8 +24,8 @@ import java.util.List;
 public class UsernamePasswordAuthenticationTokenDeserializer extends JsonDeserializer<UsernamePasswordAuthenticationToken> {
     private final ObjectMapper objectMapper;
 
-    public UsernamePasswordAuthenticationTokenDeserializer(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+    public UsernamePasswordAuthenticationTokenDeserializer() {
+        this.objectMapper = new ObjectMapper();
         this.objectMapper.registerModule(new JavaTimeModule()); // Register JavaTimeModule for date/time support
         this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false); // ignore unknown properties
     }

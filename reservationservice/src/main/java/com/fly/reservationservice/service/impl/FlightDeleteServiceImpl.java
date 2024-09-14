@@ -2,6 +2,7 @@ package com.fly.reservationservice.service.impl;
 
 import com.fly.reservationservice.exception.FlightNotFoundException;
 import com.fly.reservationservice.repository.FlightRepository;
+import com.fly.reservationservice.service.FlightDeleteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class FlightDeleteServiceImpl {
+public class FlightDeleteServiceImpl implements FlightDeleteService {
    private final FlightRepository flightRepository;
 
         /**
@@ -18,6 +19,7 @@ public class FlightDeleteServiceImpl {
         *
         * @param flightNumber the flight number
         */
+        @Override
         public void deleteFlight(String flightNumber) {
             var flightToBeDeleted = flightRepository.findByFlightNumber(flightNumber)
                     .orElseThrow(() -> new FlightNotFoundException("Flight with flight number " + flightNumber + " not found"));
