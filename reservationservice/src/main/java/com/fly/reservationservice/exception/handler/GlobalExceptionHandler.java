@@ -2,6 +2,8 @@ package com.fly.reservationservice.exception.handler;
 
 import com.fly.reservationservice.exception.EntityAlreadyExistException;
 import com.fly.reservationservice.exception.FlightNotFoundException;
+import com.fly.reservationservice.exception.SeatAlreadyReservedException;
+import com.fly.reservationservice.exception.SeatNumberNotFoundException;
 import com.fly.reservationservice.model.common.CustomError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +42,27 @@ public class GlobalExceptionHandler {
                 .message(e.getMessage())
                 .build();
         return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SeatNumberNotFoundException.class)
+    public ResponseEntity<CustomError> handleSeatNumberNotFoundException(SeatNumberNotFoundException e){
+        CustomError error = CustomError.builder()
+                .header(CustomError.Header.NOT_FOUND.getName())
+                .message(e.getMessage())
+                .isSuccess(false)
+                .httpStatus(HttpStatus.NOT_FOUND)
+                .build();
+        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SeatAlreadyReservedException.class)
+    public ResponseEntity<CustomError> handleSeatAlreadyReservedException(SeatAlreadyReservedException e){
+        CustomError error = CustomError.builder()
+                .header(CustomError.Header.ALREADY_EXIST.getName())
+                .message(e.getMessage())
+                .isSuccess(false)
+                .httpStatus(HttpStatus.CONFLICT)
+                .build();
+        return new ResponseEntity<>(error,HttpStatus.CONFLICT);
     }
 }

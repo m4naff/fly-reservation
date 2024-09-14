@@ -1,5 +1,8 @@
 package com.fly.reservationservice.service;
 
+import com.fly.reservationservice.model.reservation.Ticket;
+import com.fly.reservationservice.model.reservation.dto.request.TicketRequest;
+
 /**
  * Service interface named{@link BuyTicketService} for buying tickets.
  */
