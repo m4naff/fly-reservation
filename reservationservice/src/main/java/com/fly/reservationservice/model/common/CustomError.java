@@ -52,6 +52,8 @@ public class CustomError {
 
         API_ERROR("API ERROR"),
 
+        INSUFFICIENT_FUNDS("INSUFFICIENT FUNDS"),
+
         ALREADY_EXIST("ALREADY EXIST"),
 
         NOT_FOUND("NOT EXIST"),

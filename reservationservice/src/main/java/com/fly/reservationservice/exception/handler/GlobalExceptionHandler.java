@@ -1,9 +1,6 @@
 package com.fly.reservationservice.exception.handler;
 
-import com.fly.reservationservice.exception.EntityAlreadyExistException;
-import com.fly.reservationservice.exception.FlightNotFoundException;
-import com.fly.reservationservice.exception.SeatAlreadyReservedException;
-import com.fly.reservationservice.exception.SeatNumberNotFoundException;
+import com.fly.reservationservice.exception.*;
 import com.fly.reservationservice.model.common.CustomError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,5 +61,16 @@ public class GlobalExceptionHandler {
                 .httpStatus(HttpStatus.CONFLICT)
                 .build();
         return new ResponseEntity<>(error,HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InsufficientFundsException.class)
+    public ResponseEntity<CustomError> handleInsufficientFundsException(InsufficientFundsException e){
+        CustomError error = CustomError.builder()
+                .header(CustomError.Header.INSUFFICIENT_FUNDS.getName())
+                .message(e.getMessage())
+                .isSuccess(false)
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .build();
+        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
 }
